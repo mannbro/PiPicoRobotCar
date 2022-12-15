@@ -1,7 +1,12 @@
 from utime import sleep_ms, sleep
+import random
+
 from ultrasonic import Ultrasonic
 from motordriver import Motordriver
-import random
+from buzzer import Buzzer
+
+buzPin=15
+buzzer=Buzzer(buzPin)
 
 trigPin=19
 echoPin=18
@@ -10,12 +15,14 @@ sonic=Ultrasonic(trigPin, echoPin)
 leftFwdPin=10
 leftBckPin=11
 leftPWMPin=5
-leftSpdPin=14
+leftSpdPin=26
 rightFwdPin=12
 rightBckPin=13
 rightPWMPin=3
-rightSpdPin=15
-motor=Motordriver(sonic, leftFwdPin, leftBckPin, leftPWMPin, leftSpdPin, rightFwdPin, rightBckPin, rightPWMPin, rightSpdPin)
+rightSpdPin=27
+motor=Motordriver(buzzer, sonic, leftFwdPin, leftBckPin, leftPWMPin, leftSpdPin, rightFwdPin, rightBckPin, rightPWMPin, rightSpdPin)
+
+
 
 def autonomousDrive(speed):
     while True:
